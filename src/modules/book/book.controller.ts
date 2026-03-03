@@ -39,7 +39,7 @@ export class BookController {
 
   @Get(':id')
   findOne(@Param('id') id: string): ApiResponse<Book> {
-    const book = this.bookService.findOne(id);
+    const book = this.bookService.findOne(Number(id));
     return {
       success: true,
       message: 'ค้นหาหนังสือสำเร็จ',
@@ -52,7 +52,7 @@ export class BookController {
     @Param('id') id: string,
     @Body() updateBookDto: UpdateBookDto,
   ): ApiResponse<Book> {
-    const updatedBook = this.bookService.update(id, updateBookDto);
+    const updatedBook = this.bookService.update(Number(id), updateBookDto);
     return {
       success: true,
       message: 'อัปเดตข้อมูลหนังสือสำเร็จ',
@@ -62,7 +62,7 @@ export class BookController {
 
   @Delete(':id')
   remove(@Param('id') id: string): ApiResponse<null> {
-    this.bookService.remove(id);
+    this.bookService.remove(Number(id));
     return {
       success: true,
       message: 'ลบหนังสือสำเร็จ',

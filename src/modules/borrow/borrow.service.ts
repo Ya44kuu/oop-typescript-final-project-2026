@@ -1,55 +1,75 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { FileStorage } from '../../common/utils/file-storage';
 import { BorrowRecord } from './borrow.interface';
 import { CreateBorrowDto } from './dto/create-borrow.dto';
-
 @Injectable()
 export class BorrowService {
 
-  private borrows: BorrowRecord[] = [];
+  private fileName = 'borrows.json';
 
   findAll(): BorrowRecord[] {
-    return this.borrows;
+    return FileStorage.readFile<BorrowRecord>(this.fileName);
   }
 
   findOne(id: number): BorrowRecord {
-    const borrow = this.borrows.find(b => b.id === id);
+    const borrows = this.findAll();
+    const borrow = borrows.find(b => b.id === id);
+
     if (!borrow) {
-      throw new NotFoundException('Borrow record not found');
+      throw new NotFoundException('Borrow not found');
     }
+
     return borrow;
   }
 
-  create(dto: CreateBorrowDto): BorrowRecord {
+  create(data: CreateBorrowDto): BorrowRecord {
+    const borrows = this.findAll();
+
     const newBorrow: BorrowRecord = {
       id: Date.now(),
-      bookId: dto.bookId,
-      memberId: dto.memberId,
       borrowedAt: new Date(),
       returnedAt: null,
+      ...data,
     };
 
-    this.borrows.push(newBorrow);
+    borrows.push(newBorrow);
+    FileStorage.writeFile(this.fileName, borrows);
+
     return newBorrow;
   }
 
-  returnBook(id: number): BorrowRecord {
-    const borrow = this.findOne(id);
+  update(id: number, data: Partial<BorrowRecord>): BorrowRecord {
+    const borrows = this.findAll();
+    const index = borrows.findIndex(b => b.id === id);
 
-    if (borrow.returnedAt !== null) {
-      throw new BadRequestException('Book already returned');
+    if (index === -1) {
+      throw new NotFoundException('Borrow not found');
     }
 
-    borrow.returnedAt = new Date();
-    return borrow;
+    borrows[index] = { ...borrows[index], ...data };
+    FileStorage.writeFile(this.fileName, borrows);
+
+    return borrows[index];
   }
 
   remove(id: number): void {
-    const index = this.borrows.findIndex(b => b.id === id);
+    const borrows = this.findAll();
+    const filtered = borrows.filter(b => b.id !== id);
+    FileStorage.writeFile(this.fileName, filtered);
+  }
+  
+  returnBook(id: number): BorrowRecord {
+  const borrows = this.findAll();
+  const borrow = borrows.find(b => b.id === id);
 
-    if (index === -1) {
-      throw new NotFoundException('Borrow record not found');
-    }
+  if (!borrow) {
+    throw new NotFoundException('Borrow not found');
+  }
 
-    this.borrows.splice(index, 1);
+  borrow.returnedAt = new Date();
+
+  FileStorage.writeFile(this.fileName, borrows);
+
+  return borrow;
   }
 }

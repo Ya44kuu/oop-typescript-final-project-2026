@@ -1,0 +1,22 @@
+[
+  { "id": 1, "bookId": 2, "memberId": 1, "borrowedAt": "2026-03-01T10:00:00.000Z", "returnedAt": null },
+  { "id": 2, "bookId": 4, "memberId": 2, "borrowedAt": "2026-03-01T11:00:00.000Z", "returnedAt": null },
+  { "id": 3, "bookId": 7, "memberId": 3, "borrowedAt": "2026-03-01T12:00:00.000Z", "returnedAt": null },
+  { "id": 4, "bookId": 10, "memberId": 4, "borrowedAt": "2026-03-01T13:00:00.000Z", "returnedAt": null },
+  { "id": 5, "bookId": 13, "memberId": 5, "borrowedAt": "2026-03-01T14:00:00.000Z", "returnedAt": null },
+  { "id": 6, "bookId": 16, "memberId": 6, "borrowedAt": "2026-03-01T15:00:00.000Z", "returnedAt": null },
+  { "id": 7, "bookId": 19, "memberId": 7, "borrowedAt": "2026-03-01T16:00:00.000Z", "returnedAt": null },
+  { "id": 8, "bookId": 2, "memberId": 8, "borrowedAt": "2026-03-02T10:00:00.000Z", "returnedAt": null },
+  { "id": 9, "bookId": 4, "memberId": 9, "borrowedAt": "2026-03-02T11:00:00.000Z", "returnedAt": null },
+  { "id": 10, "bookId": 7, "memberId": 10, "borrowedAt": "2026-03-02T12:00:00.000Z", "returnedAt": null },
+  { "id": 11, "bookId": 10, "memberId": 11, "borrowedAt": "2026-03-02T13:00:00.000Z", "returnedAt": null },
+  { "id": 12, "bookId": 13, "memberId": 12, "borrowedAt": "2026-03-02T14:00:00.000Z", "returnedAt": null },
+  { "id": 13, "bookId": 16, "memberId": 13, "borrowedAt": "2026-03-02T15:00:00.000Z", "returnedAt": null },
+  { "id": 14, "bookId": 19, "memberId": 14, "borrowedAt": "2026-03-02T16:00:00.000Z", "returnedAt": null },
+  { "id": 15, "bookId": 2, "memberId": 15, "borrowedAt": "2026-03-03T10:00:00.000Z", "returnedAt": null },
+  { "id": 16, "bookId": 4, "memberId": 16, "borrowedAt": "2026-03-03T11:00:00.000Z", "returnedAt": null },
+  { "id": 17, "bookId": 7, "memberId": 17, "borrowedAt": "2026-03-03T12:00:00.000Z", "returnedAt": null },
+  { "id": 18, "bookId": 10, "memberId": 18, "borrowedAt": "2026-03-03T13:00:00.000Z", "returnedAt": null },
+  { "id": 19, "bookId": 13, "memberId": 19, "borrowedAt": "2026-03-03T14:00:00.000Z", "returnedAt": null },
+  { "id": 20, "bookId": 16, "memberId": 20, "borrowedAt": "2026-03-03T15:00:00.000Z", "returnedAt": null }
+]

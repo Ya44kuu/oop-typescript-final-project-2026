@@ -1,13 +1,10 @@
-import { IsNumber, IsNotEmpty } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class CreateBorrowDto {
 
   @IsNumber()
-  @IsNotEmpty()
-  bookId: number;
+  bookId!: number;
 
   @IsNumber()
-  @IsNotEmpty()
-  memberId: number;
-
+  memberId!: number;
 }
