@@ -1,7 +1,7 @@
 import { BookStatus } from './book.enum';
 
 export interface Book {
-  id: string;
+  id: number;
   title: string;
   author: string;
   isbn: string;

@@ -1,46 +1,58 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { FileStorage } from '../../common/utils/file-storage';
 import { Member } from './member.interface';
-import { CreateMemberDto } from './dto/create-member.dto';
-import { UpdateMemberDto } from './dto/update-member.dto';
 
 @Injectable()
 export class MemberService {
-  private members: Member[] = [];
-  private idCounter = 1;
 
-  create(dto: CreateMemberDto): Member {
-    const newMember: Member = {
-      id: this.idCounter++,
-      name: dto.name,
-      email: dto.email,
-      membershipType: dto.membershipType,
-    };
-
-    this.members.push(newMember);
-    return newMember;
-  }
+  private fileName = 'members.json';
 
   findAll(): Member[] {
-    return this.members;
+    return FileStorage.readFile<Member>(this.fileName);
   }
 
-  findOne(id: number): Member | undefined {
-    return this.members.find(m => m.id === id);
-  }
+  findOne(id: number): Member {
+    const members = this.findAll();
+    const member = members.find(m => m.id === id);
 
-  update(id: number, dto: UpdateMemberDto): Member | undefined {
-    const member = this.findOne(id);
-    if (!member) return undefined;
-
-    if (dto.name) member.name = dto.name;
-    if (dto.email) member.email = dto.email;
-    if (dto.membershipType) member.membershipType = dto.membershipType;
+    if (!member) {
+      throw new NotFoundException('Member not found');
+    }
 
     return member;
   }
 
-  remove(id: number): string {
-    this.members = this.members.filter(m => m.id !== id);
-    return 'deleted';
+  create(data: Omit<Member, 'id'>): Member {
+    const members = this.findAll();
+
+    const newMember: Member = {
+      id: Date.now(),
+      ...data,
+    };
+
+    members.push(newMember);
+    FileStorage.writeFile(this.fileName, members);
+
+    return newMember;
+  }
+
+  update(id: number, data: Partial<Member>): Member {
+    const members = this.findAll();
+    const index = members.findIndex(m => m.id === id);
+
+    if (index === -1) {
+      throw new NotFoundException('Member not found');
+    }
+
+    members[index] = { ...members[index], ...data };
+    FileStorage.writeFile(this.fileName, members);
+
+    return members[index];
+  }
+
+  remove(id: number): void {
+    const members = this.findAll();
+    const filtered = members.filter(m => m.id !== id);
+    FileStorage.writeFile(this.fileName, filtered);
   }
 }

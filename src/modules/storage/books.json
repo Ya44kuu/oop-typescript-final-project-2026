@@ -1,0 +1,22 @@
+[
+  { "id": 1, "title": "Clean Code", "author": "Robert C. Martin", "isbn": "ISBN-001", "status": "AVAILABLE" },
+  { "id": 2, "title": "The Pragmatic Programmer", "author": "Andrew Hunt", "isbn": "ISBN-002", "status": "BORROWED" },
+  { "id": 3, "title": "Design Patterns", "author": "Erich Gamma", "isbn": "ISBN-003", "status": "AVAILABLE" },
+  { "id": 4, "title": "Refactoring", "author": "Martin Fowler", "isbn": "ISBN-004", "status": "BORROWED" },
+  { "id": 5, "title": "You Don't Know JS", "author": "Kyle Simpson", "isbn": "ISBN-005", "status": "AVAILABLE" },
+  { "id": 6, "title": "Eloquent JavaScript", "author": "Marijn Haverbeke", "isbn": "ISBN-006", "status": "AVAILABLE" },
+  { "id": 7, "title": "Introduction to Algorithms", "author": "CLRS", "isbn": "ISBN-007", "status": "BORROWED" },
+  { "id": 8, "title": "Head First Design Patterns", "author": "Eric Freeman", "isbn": "ISBN-008", "status": "AVAILABLE" },
+  { "id": 9, "title": "Effective Java", "author": "Joshua Bloch", "isbn": "ISBN-009", "status": "AVAILABLE" },
+  { "id": 10, "title": "The Clean Coder", "author": "Robert C. Martin", "isbn": "ISBN-010", "status": "BORROWED" },
+  { "id": 11, "title": "Domain-Driven Design", "author": "Eric Evans", "isbn": "ISBN-011", "status": "AVAILABLE" },
+  { "id": 12, "title": "Working Effectively with Legacy Code", "author": "Michael Feathers", "isbn": "ISBN-012", "status": "AVAILABLE" },
+  { "id": 13, "title": "Code Complete", "author": "Steve McConnell", "isbn": "ISBN-013", "status": "BORROWED" },
+  { "id": 14, "title": "Cracking the Coding Interview", "author": "Gayle Laakmann", "isbn": "ISBN-014", "status": "AVAILABLE" },
+  { "id": 15, "title": "Deep Work", "author": "Cal Newport", "isbn": "ISBN-015", "status": "AVAILABLE" },
+  { "id": 16, "title": "Atomic Habits", "author": "James Clear", "isbn": "ISBN-016", "status": "BORROWED" },
+  { "id": 17, "title": "The Mythical Man-Month", "author": "Fred Brooks", "isbn": "ISBN-017", "status": "AVAILABLE" },
+  { "id": 18, "title": "Soft Skills", "author": "John Sonmez", "isbn": "ISBN-018", "status": "AVAILABLE" },
+  { "id": 19, "title": "Grokking Algorithms", "author": "Aditya Bhargava", "isbn": "ISBN-019", "status": "BORROWED" },
+  { "id": 20, "title": "The Phoenix Project", "author": "Gene Kim", "isbn": "ISBN-020", "status": "AVAILABLE" }
+]
