@@ -2,33 +2,68 @@ import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/commo
 import { MemberService } from './member.service';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
+import { ApiResponse } from '../../common/interfaces/api-response.interface';
+import { Member } from './member.interface';
 
 @Controller('members')
 export class MemberController {
   constructor(private readonly memberService: MemberService) {}
 
   @Post()
-  create(@Body() dto: CreateMemberDto) {
-    return this.memberService.create(dto);
+  create(@Body() dto: CreateMemberDto): ApiResponse<Member> {
+    const member = this.memberService.create(dto);
+
+    return {
+      success: true,
+      message: 'Member created successfully',
+      data: member,
+    };
   }
 
   @Get()
-  findAll() {
-    return this.memberService.findAll();
+  findAll(): ApiResponse<Member[]> {
+    const members = this.memberService.findAll();
+
+    return {
+      success: true,
+      message: 'Members retrieved successfully',
+      data: members,
+    };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.memberService.findOne(Number(id));
+  findOne(@Param('id') id: string): ApiResponse<Member> {
+    const member = this.memberService.findOne(Number(id));
+
+    return {
+      success: true,
+      message: 'Member retrieved successfully',
+      data: member,
+    };
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateMemberDto) {
-    return this.memberService.update(Number(id), dto);
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateMemberDto,
+  ): ApiResponse<Member> {
+    const member = this.memberService.update(Number(id), dto);
+
+    return {
+      success: true,
+      message: 'Member updated successfully',
+      data: member,
+    };
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.memberService.remove(Number(id));
+  remove(@Param('id') id: string): ApiResponse<null> {
+    this.memberService.remove(Number(id));
+
+    return {
+      success: true,
+      message: 'Member deleted successfully',
+      data: null,
+    };
   }
 }
