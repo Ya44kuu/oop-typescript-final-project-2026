@@ -13,7 +13,7 @@ import { UpdateBookDto } from './dto/update-book.dto';
 import { Book } from './book.interface';
 import { ApiResponse } from '../../common/interfaces/api-response.interface';
 
-@Controller('books') // กำหนด path หลักเป็น /books
+@Controller('books')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
@@ -22,7 +22,7 @@ export class BookController {
     const newBook = this.bookService.create(createBookDto);
     return {
       success: true,
-      message: 'เพิ่มหนังสือสำเร็จ',
+      message: 'Book created successfully',
       data: newBook,
     };
   }
@@ -32,7 +32,7 @@ export class BookController {
     const books = this.bookService.findAll();
     return {
       success: true,
-      message: 'ดึงข้อมูลหนังสือทั้งหมดสำเร็จ',
+      message: 'Retrieved all books successfully',
       data: books,
     };
   }
@@ -42,7 +42,7 @@ export class BookController {
     const book = this.bookService.findOne(Number(id));
     return {
       success: true,
-      message: 'ค้นหาหนังสือสำเร็จ',
+      message: 'Book retrieved successfully',
       data: book,
     };
   }
@@ -55,7 +55,7 @@ export class BookController {
     const updatedBook = this.bookService.update(Number(id), updateBookDto);
     return {
       success: true,
-      message: 'อัปเดตข้อมูลหนังสือสำเร็จ',
+      message: 'Book updated successfully',
       data: updatedBook,
     };
   }
@@ -65,7 +65,7 @@ export class BookController {
     this.bookService.remove(Number(id));
     return {
       success: true,
-      message: 'ลบหนังสือสำเร็จ',
+      message: 'Book deleted successfully',
       data: null,
     };
   }
