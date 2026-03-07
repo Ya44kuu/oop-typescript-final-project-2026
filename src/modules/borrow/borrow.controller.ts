@@ -3,12 +3,19 @@ import { BorrowService } from './borrow.service';
 import { CreateBorrowDto } from './dto/create-borrow.dto';
 import { ApiResponse } from '../../common/interfaces/api-response.interface';
 import { BorrowRecord } from './borrow.interface';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('Borrows')
 
 @Controller('borrows')
 export class BorrowController {
 
   constructor(private readonly borrowService: BorrowService) {}
 
+//   @ApiOperation({
+//   summary: 'ดึงรายการยืมทั้งหมด',
+//   description: 'แสดงรายการการยืมหนังสือทั้งหมดในระบบ'
+// })
   @Get()
   findAll(): ApiResponse<BorrowRecord[]> {
 

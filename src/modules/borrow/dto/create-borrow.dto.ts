@@ -1,10 +1,22 @@
-import { IsNumber } from 'class-validator';
+import { IsInt, Min } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateBorrowDto {
 
-  @IsNumber()
+  @ApiProperty({
+    example: 1,
+    description: "Book ID to borrow"
+  })
+  @IsInt()
+  @Min(1)
   bookId!: number;
 
-  @IsNumber()
+  @ApiProperty({
+    example: 2,
+    description: "Member ID who borrows the book"
+  })
+  @IsInt()
+  @Min(1)
   memberId!: number;
+
 }

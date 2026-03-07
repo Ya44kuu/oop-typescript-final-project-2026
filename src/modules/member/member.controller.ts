@@ -4,6 +4,10 @@ import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
 import { ApiResponse } from '../../common/interfaces/api-response.interface';
 import { Member } from './member.interface';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('Members')
+
 
 @Controller('members')
 export class MemberController {

@@ -1,26 +1,28 @@
-import { IsString, IsOptional, IsInt, Min, Max, IsEnum } from 'class-validator';
-import { BookStatus } from '../book.enum';
+import { IsOptional, IsString, IsInt, Min, Max } from 'class-validator';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateBookDto {
-  @IsString()
+
+  @ApiPropertyOptional({ example: "Clean Code" })
   @IsOptional()
+  @IsString()
   title?: string;
 
-  @IsString()
+  @ApiPropertyOptional({ example: "Robert C. Martin" })
   @IsOptional()
+  @IsString()
   author?: string;
 
-  @IsString()
+  @ApiPropertyOptional({ example: "ISBN-001" })
   @IsOptional()
+  @IsString()
   isbn?: string;
 
-  @IsEnum(BookStatus)
+  @ApiPropertyOptional({ example: 2008 })
   @IsOptional()
-  status?: BookStatus;
-
   @IsInt()
   @Min(1000)
   @Max(new Date().getFullYear())
-  @IsOptional()
   publishedYear?: number;
+
 }
