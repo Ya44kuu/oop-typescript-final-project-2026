@@ -7,9 +7,24 @@
   "license": "MIT",
   "contributors": [
     {
-      "fullname": "John Doe",
-      "username": "username1",
-      "studentId": "12345678"
+      "fullname": "ณัฐฏ์กฤศ กองแก้ว",
+      "username": "NuttakitKongkaew",
+      "studentId": "68010334"
+    },
+    {
+      "fullname": "พงศ์พิสิฏฐ์ ภูมิภักดิ์",
+      "username": "bananabank555",
+      "studentId": "68010730"
+    },
+    {
+      "fullname": "ศิวาภณ นิธิศบุญกลาง",
+      "username": "gummert66",
+      "studentId": "68011077"
+    },
+    {
+      "fullname": "ศิริศาสตร์ ชำนาญ",
+      "username": "Ya44kuu",
+      "studentId": "68011068"
     }
   ],
   "project": {
